@@ -1,0 +1,28 @@
+# Local configuration - never commit real user settings
+config.ini
+
+# Local runtime/data/logs - keep directories, not machine data
+/data/cache/*
+!/data/.gitkeep
+!/data/node_cache.json.example
+
+/logs/*
+!/logs/.gitkeep
+
+/run/*
+!/run/.gitkeep
+
+# Local backups, exports, and generated packages
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.bak
+*.tmp
+*.swp
+*.orig
+*~
+
+# OS/editor junk
+.DS_Store
+Thumbs.db

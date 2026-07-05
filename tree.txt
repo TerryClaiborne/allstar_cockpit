@@ -1,0 +1,46 @@
+allstar_cockpit/
+|-- .gitignore
+|-- .htaccess
+|-- README.md
+|-- VERSION
+|-- api/
+|   |-- activity.php
+|   |-- auth_status.php
+|   |-- clear_downstream_history.php
+|   |-- downstream_history.php
+|   |-- health.php
+|   |-- node_lookup.php
+|   `-- status.php
+|-- app/
+|   |-- Bootstrap.php
+|   `-- Support/
+|       |-- AsteriskMonitor.php
+|       |-- Auth.php
+|       |-- Config.php
+|       |-- EventStore.php
+|       |-- JsonResponse.php
+|       `-- NodeLookup.php
+|-- bin/
+|   |-- allstar-cockpit-ami-status.php
+|   `-- allstar-cockpit-read.sh
+|-- config.ini.example
+|-- data/
+|   |-- .gitkeep
+|   `-- node_cache.json.example
+|-- index.php
+|-- login.php
+|-- logout.php
+|-- logs/
+|   `-- .gitkeep
+|-- public/
+|   |-- assets/
+|   |   |-- css/
+|   |   |   `-- style.css
+|   |   `-- js/
+|   |       `-- app.js
+|   `-- index.php
+|-- run/
+|   `-- .gitkeep
+|-- screenshot.png
+|-- setup_allstar_cockpit.sh
+`-- tree.txt

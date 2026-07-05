@@ -1,0 +1,17 @@
+Options -Indexes
+
+<FilesMatch "(^\.|config\.ini|auth\.ini|\.jsonl$|\.log$|\.state$|\.pid$|\.sh$|\.md$)">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^$ public/ [R=302,L]
+</IfModule>
+
+
+<IfModule mod_authz_core.c>
+    <Files "auth.ini">
+        Require all denied
+    </Files>
+</IfModule>

@@ -1,0 +1,97 @@
+; AllStar Cockpit configuration
+; Local file. Do not commit your real config.ini to GitHub.
+;
+; Fresh install users normally only need to set MYNODE.
+; If you have local/private bridge nodes, add them to HIDE_NODES.
+
+; ------------------------------------------------------------
+; Main settings users normally edit
+; ------------------------------------------------------------
+
+APP_NAME="AllStar Cockpit"
+MYNODE="YOUR_ALLSTAR_NODE"
+
+; Optional comma/space separated node list to hide from Current Connections,
+; downstream display, Live Activity, and History.
+; Leave blank if you do not have private/local nodes to hide.
+; Example: HIDE_NODES="1957"
+; Example: HIDE_NODES="1957,1958"
+HIDE_NODES=""
+
+; ------------------------------------------------------------
+; Login / security
+; ------------------------------------------------------------
+; 0 = No Login / Normal
+; 1 = View Only until signed in for protected actions
+;
+; Set/change the password hash with:
+; sudo /var/www/html/allstar_cockpit/setup_allstar_cockpit.sh --set-admin-password
+;
+; Turn login back off with:
+; sudo /var/www/html/allstar_cockpit/setup_allstar_cockpit.sh --disable-auth
+
+ALLSTAR_COCKPIT_AUTH_ENABLED=0
+ALLSTAR_COCKPIT_ADMIN_USER="admin"
+ALLSTAR_COCKPIT_ADMIN_PASSWORD_HASH=""
+
+; ------------------------------------------------------------
+; Asterisk / helper
+; ------------------------------------------------------------
+
+ASTERISK_BIN="/usr/sbin/asterisk"
+USE_SUDO_HELPER=0
+HELPER_PATH="/var/www/html/allstar_cockpit/bin/allstar-cockpit-read.sh"
+
+; ------------------------------------------------------------
+; Dashboard refresh / local history
+; ------------------------------------------------------------
+
+POLL_INTERVAL_SECONDS=1
+FAST_STATUS_ONLY=1
+HISTORY_LIMIT=250
+
+; ------------------------------------------------------------
+; Display / lookups
+; ------------------------------------------------------------
+
+SHOW_OBSERVED_IPS=1
+ENABLE_EXTERNAL_LOOKUPS=0
+EXTERNAL_LOOKUP_CACHE_SECONDS=60
+REMOTE_DOWNSTREAM_LOOKUP_DEPTH=2
+REMOTE_DOWNSTREAM_LOOKUP_LIMIT=12
+NODE_CACHE_TTL_SECONDS=86400
+CACHE_DIR="/var/www/html/allstar_cockpit/data/cache"
+
+; ------------------------------------------------------------
+; Downstream filtering / downstream history
+; ------------------------------------------------------------
+
+; Hide private AllStar-style node numbers 1000-1999 from Current Connections,
+; downstream display, Live Activity, and History. Set to 0 if you want them visible.
+HIDE_PRIVATE_NODE_RANGE=1
+
+; Only show useful public-style AllStar/EchoLink/extended node numbers in downstream lists.
+VALID_DOWNSTREAM_ONLY=1
+
+; EchoLink-style 3xxxxxx numbers are useful as direct EchoLink connections,
+; but noisy as downstream nodes.
+SHOW_ECHOLINK_DOWNSTREAM=0
+
+; How long Downstream History is kept.
+DOWNSTREAM_HISTORY_RETENTION_HOURS=48
+
+; Number of missed polls before a downstream node is logged as gone.
+DOWNSTREAM_GONE_MISSES=3
+
+; ------------------------------------------------------------
+; Local project paths
+; ------------------------------------------------------------
+
+DATA_DIR="/var/www/html/allstar_cockpit/data"
+LOGS_DIR="/var/www/html/allstar_cockpit/logs"
+RUN_DIR="/var/www/html/allstar_cockpit/run"
+ACTIVITY_LOG="/var/www/html/allstar_cockpit/logs/activity.jsonl"
+ERROR_LOG="/var/www/html/allstar_cockpit/logs/error.log"
+SNAPSHOT_FILE="/var/www/html/allstar_cockpit/run/current_snapshot.json"
+DOWNSTREAM_HISTORY_LOG="/var/www/html/allstar_cockpit/logs/downstream-history.jsonl"
+DOWNSTREAM_CURRENT_FILE="/var/www/html/allstar_cockpit/run/downstream-current.json"
