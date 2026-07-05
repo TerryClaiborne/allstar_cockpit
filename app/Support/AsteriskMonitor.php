@@ -157,9 +157,12 @@ final class AsteriskMonitor
         $helper = $this->config->getString('HELPER_PATH', $this->config->root() . '/bin/allstar-cockpit-read.sh');
         $asterisk = $this->config->getString('ASTERISK_BIN', '/usr/sbin/asterisk');
 
+        $nodeScopedCommands = ['rpt_nodes' => true, 'rpt_stats' => true, 'ami_status' => true];
+        $needsNodeArg = $node !== '' && isset($nodeScopedCommands[$command]);
+
         if ($useSudo) {
             $cmd = 'sudo ' . escapeshellarg($helper) . ' ' . escapeshellarg($command);
-            if ($node !== '') {
+            if ($needsNodeArg) {
                 $cmd .= ' ' . escapeshellarg($node);
             }
         } else {
@@ -167,7 +170,7 @@ final class AsteriskMonitor
                 return ['ok' => false, 'output' => '', 'error' => 'Helper is not executable.'];
             }
             $cmd = 'ASTERISK_BIN=' . escapeshellarg($asterisk) . ' ' . escapeshellarg($helper) . ' ' . escapeshellarg($command);
-            if ($node !== '') {
+            if ($needsNodeArg) {
                 $cmd .= ' ' . escapeshellarg($node);
             }
         }
