@@ -62,13 +62,13 @@ MYNODE="67040"
 Open the dashboard:
 
 ```text
-https://YOUR_NODE_HOSTNAME/allstar_cockpit/public/
+http://NODE-IP/allstar_cockpit/public/
 ```
 
-or locally:
+If you have HTTPS and a domain name configured, use that instead:
 
 ```text
-https://127.0.0.1/allstar_cockpit/public/
+https://YOUR-DOMAIN/allstar_cockpit/public/
 ```
 
 ## Updating
