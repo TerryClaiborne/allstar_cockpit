@@ -23,7 +23,7 @@ final class Auth
         header('X-Content-Type-Options: nosniff');
         header('Referrer-Policy: same-origin');
         header('Permissions-Policy: geolocation=(), microphone=(), camera=()');
-        header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'");
+        header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://raw.githubusercontent.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'");
     }
 
     public function isEnabled(): bool

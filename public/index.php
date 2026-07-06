@@ -161,6 +161,6 @@ function asc_e(string $value): string
     </div>
 </div>
 
-<script src="assets/js/app.js?v=0.1.92-dev-ip-readable"></script>
+<script src="assets/js/app.js?v=<?= rawurlencode($version) ?>"></script>
 </body>
 </html>
