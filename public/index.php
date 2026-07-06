@@ -12,6 +12,8 @@ $auth->allowReadOnlyPage();
 $authStatus = $auth->status();
 $versionFile = dirname(__DIR__) . '/VERSION';
 $version = is_file($versionFile) ? trim((string)file_get_contents($versionFile)) : 'dev';
+$repoUrl = 'https://github.com/TerryClaiborne/allstar_cockpit';
+$remoteVersionUrl = 'https://raw.githubusercontent.com/TerryClaiborne/allstar_cockpit/main/VERSION';
 
 function asc_e(string $value): string
 {
@@ -23,7 +25,7 @@ function asc_e(string $value): string
     <meta charset="utf-8">
     <title>AllStar Cockpit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/style.css?v=0.1.92-dev-ip-readable">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= rawurlencode($version) ?>">
 </head>
 <body>
 <div class="app-shell">
@@ -32,10 +34,30 @@ function asc_e(string $value): string
             <a class="node-pill" id="nodePill" href="#" target="_blank" rel="noopener noreferrer">Node: not configured</a>
         </div>
 
-        <div class="title-capsule" aria-label="Application title">
-            <span class="title-main">AllStar Cockpit</span>
-            <span class="update-bolt" title="Live dashboard">⚡</span>
-        </div>
+        <a
+            class="title-link"
+            href="<?= asc_e($repoUrl) ?>"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open AllStar Cockpit GitHub repository"
+        >
+            <div
+                class="title-capsule"
+                id="branding-title"
+                data-local-version="<?= asc_e($version) ?>"
+                data-version-url="<?= asc_e($remoteVersionUrl) ?>"
+                title="AllStar Cockpit v<?= asc_e($version) ?>"
+                aria-label="Application title"
+            >
+                <span class="title-main">AllStar Cockpit</span>
+                <span
+                    class="update-bolt"
+                    id="update-indicator"
+                    aria-hidden="true"
+                    title="Installed version: v<?= asc_e($version) ?>"
+                >⚡</span>
+            </div>
+        </a>
 
         <div class="auth-controls auth-mode-<?= asc_e((string)$authStatus['mode']) ?>" aria-label="Login status">
             <span class="auth-state"><?= asc_e((string)$authStatus['label']) ?></span>

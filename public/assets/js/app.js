@@ -12,6 +12,62 @@
 
     const el = (id) => document.getElementById(id);
 
+
+    function parseVersionString(value) {
+        const match = String(value || '').trim().match(/^(\d+)\.(\d+)\.(\d+)(?:[-+].*)?$/);
+        if (!match) return null;
+        return [Number(match[1]), Number(match[2]), Number(match[3])];
+    }
+
+    function compareVersions(left, right) {
+        const leftParts = parseVersionString(left);
+        const rightParts = parseVersionString(right);
+        if (!leftParts || !rightParts) return 0;
+
+        for (let index = 0; index < leftParts.length; index += 1) {
+            if (leftParts[index] > rightParts[index]) return 1;
+            if (leftParts[index] < rightParts[index]) return -1;
+        }
+
+        return 0;
+    }
+
+    async function checkForRepoUpdate() {
+        const title = el('branding-title');
+        const indicator = el('update-indicator');
+
+        if (!title || !indicator) return;
+
+        const localVersion = String(title.dataset.localVersion || '').trim();
+        const versionUrl = String(title.dataset.versionUrl || '').trim();
+
+        if (localVersion !== '') {
+            title.title = `AllStar Cockpit v${localVersion}`;
+            indicator.title = `Installed version: v${localVersion}`;
+        }
+
+        if (localVersion === '' || versionUrl === '') return;
+
+        try {
+            const response = await fetch(versionUrl, {
+                method: 'GET',
+                cache: 'no-store',
+            });
+
+            if (!response.ok) return;
+
+            const remoteVersion = String(await response.text()).trim();
+
+            if (compareVersions(remoteVersion, localVersion) > 0) {
+                indicator.classList.add('update-available');
+                title.title = `AllStar Cockpit v${localVersion} - update available: v${remoteVersion}`;
+                indicator.title = `Update available: v${remoteVersion} (installed v${localVersion})`;
+            }
+        } catch (error) {
+            // Fail quietly if GitHub cannot be reached.
+        }
+    }
+
     function setText(id, value) {
         const node = el(id);
         if (node) node.textContent = value;
@@ -1051,4 +1107,5 @@
     }
 
     refresh();
+    checkForRepoUpdate();
 })();
