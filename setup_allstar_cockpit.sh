@@ -150,7 +150,7 @@ clean_config_layout() {
             "ALLSTAR_COCKPIT_ADMIN_USER" => "admin",
             "ALLSTAR_COCKPIT_ADMIN_PASSWORD_HASH" => "",
             "ASTERISK_BIN" => "/usr/sbin/asterisk",
-            "USE_SUDO_HELPER" => "0",
+            "USE_SUDO_HELPER" => "1",
             "HELPER_PATH" => "/var/www/html/allstar_cockpit/bin/allstar-cockpit-read.sh",
             "POLL_INTERVAL_SECONDS" => "1",
             "FAST_STATUS_ONLY" => "1",

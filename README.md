@@ -224,7 +224,7 @@ Do not type a plain password directly into `config.ini`.
 ### Asterisk / helper
 
 - `ASTERISK_BIN` — Path to the Asterisk CLI binary. Default: `"/usr/sbin/asterisk"`.
-- `USE_SUDO_HELPER` — Makes the web app use the read-only sudo helper. The setup script installs the needed sudoers rule. Default: `0`.
+- `USE_SUDO_HELPER` — Makes the web app use the installed read-only sudo helper. This should normally be `1` for Apache/PHP installs so the dashboard can read Asterisk status, including IAX status. Default: `1`.
 - `HELPER_PATH` — Path to the read-only helper script. Default: `"/var/www/html/allstar_cockpit/bin/allstar-cockpit-read.sh"`.
 
 ### Dashboard refresh / history

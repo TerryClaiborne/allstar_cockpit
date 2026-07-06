@@ -39,7 +39,7 @@ ALLSTAR_COCKPIT_ADMIN_PASSWORD_HASH=""
 ; ------------------------------------------------------------
 
 ASTERISK_BIN="/usr/sbin/asterisk"
-USE_SUDO_HELPER=0
+USE_SUDO_HELPER=1
 HELPER_PATH="/var/www/html/allstar_cockpit/bin/allstar-cockpit-read.sh"
 
 ; ------------------------------------------------------------
