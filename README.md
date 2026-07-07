@@ -4,7 +4,7 @@ AllStar Cockpit is a lightweight web dashboard for one ASL3 / AllStarLink node.
 
 It watches the node and shows live activity, current connections, downstream nodes, IAX links, and recent history. It does not connect, disconnect, restart, or control the node.
 
-AllStar Cockpit is built for ASL3 systems using Apache, PHP, and Asterisk/app_rpt. It has been tested on Debian 12 and Debian 13 on 64-bit ARM, including Raspberry Pi 4 and Raspberry Pi 5. It should also work on similar Debian-based Linux systems running ASL3, but other distributions are not the primary target.  Current version: **0.1.94-dev**
+AllStar Cockpit is built for ASL3 systems using Apache, PHP, and Asterisk/app_rpt. It has been tested on Debian 12 and Debian 13 on 64-bit ARM, including Raspberry Pi 4 and Raspberry Pi 5. It should also work on similar Debian-based Linux systems running ASL3, but other distributions are not the primary target.  Current version: **0.1.95-dev**
 
 <br>
 
