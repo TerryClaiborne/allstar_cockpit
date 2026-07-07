@@ -1050,7 +1050,9 @@ final class AsteriskMonitor
             ];
         }
 
-        if (!$events && ($rxKeyed || $txKeyed)) {
+        $hasVisibleConnections = count($connections) > 0;
+
+        if (!$events && ($rxKeyed || ($txKeyed && !$hasVisibleConnections))) {
             $events[] = [
                 'ts' => gmdate('c'),
                 'type' => 'tx',

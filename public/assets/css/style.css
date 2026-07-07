@@ -2312,3 +2312,73 @@ button,
         animation: none;
     }
 }
+
+/* Live Activity field trim: keep normal desktop rows on one line. */
+@media (min-width: 761px) {
+    .live-panel .activity-grid {
+        min-height: 52px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .live-panel .activity-fields {
+        grid-template-columns:
+            minmax(48px, .72fr)
+            minmax(48px, .66fr)
+            minmax(44px, .56fr)
+            minmax(70px, .95fr)
+            minmax(96px, 1.22fr)
+            minmax(62px, .78fr);
+        gap: 4px;
+    }
+
+    .live-panel .mini-field {
+        min-width: 0;
+        min-height: 24px;
+        padding: 2px 4px;
+    }
+
+    .live-panel .mini-label {
+        font-size: .48rem;
+        line-height: 1;
+    }
+
+    .live-panel .mini-value {
+        font-size: .67rem;
+        line-height: 1.05;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .live-panel .mini-field.field-ip .mini-value,
+    .live-panel .field-mode .mini-value,
+    .live-panel .field-time .mini-value {
+        font-size: .66rem;
+    }
+}
+
+/* Live Activity IP/Time readability: match Current Connections IP emphasis. */
+.live-panel .mini-field.field-ip .mini-value,
+.live-panel .mini-field.field-time .mini-value {
+    color: #102a3a;
+    font-size: .68rem;
+    font-weight: 950;
+    line-height: 1.08;
+    text-shadow: none;
+}
+
+.live-panel .mini-field.field-ip .mini-label,
+.live-panel .mini-field.field-time .mini-label {
+    color: #385f78;
+    font-weight: 950;
+}
+
+/* Live Activity field label readability. */
+.live-panel .mini-label {
+    color: #385f78;
+    font-size: .52rem;
+    font-weight: 950;
+    letter-spacing: .055em;
+    text-shadow: none;
+}

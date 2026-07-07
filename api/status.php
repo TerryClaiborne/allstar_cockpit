@@ -17,8 +17,10 @@ $store = new EventStore($config);
 
 $snapshot = $monitor->snapshot();
 $store->recordConnectionChanges($snapshot['current_connections'] ?? [], $snapshot['downstream_links'] ?? []);
-$snapshot['history_preview'] = $store->readHistory(1000);
-$snapshot['downstream_history_preview'] = $store->readDownstreamHistory(1000);
+
+$historyLimit = max(25, min(250, $config->getInt('HISTORY_LIMIT', 250)));
+$snapshot['history_preview'] = $store->readHistory($historyLimit);
+$snapshot['downstream_history_preview'] = $store->readDownstreamHistory($historyLimit);
 
 JsonResponse::send([
     'ok' => true,
